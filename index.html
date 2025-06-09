@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steep Style - Eleva Tu Estilo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #002147;
+            background: linear-gradient(135deg, #f5f0e9 0%, #e0c58f 100%);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(245, 240, 233, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #002147;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3c5070;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #002147;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e0c58f;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0,33,71,0.9) 0%, rgba(60,80,112,0.8) 50%, rgba(224,197,143,0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(224,197,143,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #e0c58f, #d2b48c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #e0c58f, #d2b48c);
+            color: #002147;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: #002147;
+            color: #e0c58f;
+            border: 2px solid #e0c58f;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #002147;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #e0c58f, #d2b48c);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: rgba(245, 240, 233, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(224, 197, 143, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(224, 197, 143, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,33,71,0.2);
+            border-color: #e0c58f;
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            color: #3c5070;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #002147;
+        }
+
+        .product-card p {
+            color: #3c5070;
+            line-height: 1.8;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #f5f0e9, #e0c58f);
+            margin: 2% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        .close {
+            color: #002147;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #3c5070;
+            transform: scale(1.2);
+        }
+
+        .modal h2 {
+            color: #002147;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: #3c5070;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .product-item h4 {
+            color: #002147;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .product-item p {
+            color: #3c5070;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #e0c58f;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Gallery Styles */
+        .gallery-section {
+            background: rgba(217, 203, 194, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 33, 71, 0.9));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Motivational Quotes */
+        .quote-section {
+            background: linear-gradient(135deg, #3c5070, #002147);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8rem;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            transition: opacity 0.3s ease;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 2;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Catalog Section */
+        .catalog-section {
+            background: rgba(217, 203, 194, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .catalog-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .catalog-btn {
+            padding: 1rem 1.5rem;
+            background: #3c5070;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .catalog-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .catalog-btn:hover::before {
+            left: 100%;
+        }
+
+        .catalog-btn:hover {
+            background: #002147;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* File Upload Styles */
+        .upload-section {
+            background: rgba(224, 197, 143, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .file-upload {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            background: #3c5070;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem;
+        }
+
+        .file-upload:hover {
+            background: #002147;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .file-upload input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .uploaded-files {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .file-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-file {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .delete-file:hover {
+            background: #c82333;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #e0c58f, #d2b48c);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            color: #002147;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(245, 240, 233, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ea952;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #002147;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: #e0c58f;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #d2b48c;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .catalog-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+                padding: 1rem;
+            }
+
+            .product-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animation.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <i class="fas fa-fire"></i>
+                STEEP STYLE
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#catalogos">Catálogos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>ELEVA TU ESTILO</h1>
+            <p>Tu actitud define tu altitud. Vístete para el éxito que mereces.</p>
+            <a href="#productos" class="cta-button">Descubre Tu Poder</a>
+        </div>
+    </section>
+
+    <section class="section" id="productos">
+        <h2 class="scroll-animation">Productos Premium</h2>
+        <div class="products-grid">
+            <div class="product-card scroll-animation" data-category="zapatillas">
+                <div class="product-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h3>Zapatillas</h3>
+                <p>Nike, Adidas, Jordan - Cada paso cuenta hacia tu grandeza. Camina con confianza, corre hacia tus sueños.</p>
+            </div>
+            <div class="product-card scroll-animation" data-category="poleras">
+                <div class="product-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>Poleras & Polos</h3>
+                <p>Comodidad premium que habla de tu personalidad. Tu estilo es tu mensaje al mundo.</p>
+            </div>
+            <div class="product-card scroll-animation" data-category="conjuntos">
+                <div class="product-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3>Conjuntos</h3>
+                <p>Coordina tu éxito desde adentro hacia afuera. La excelencia se vive en cada detalle.</p>
+            </div>
+            <div class="product-card scroll-animation" data-category="medias">
+                <div class="product-icon">
+                    <i class="fas fa-socks"></i>
+                </div>
+                <h3>Medias</h3>
+                <p>Los detalles marcan la diferencia. Incluso lo invisible debe ser extraordinario.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para mostrar productos -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Productos</h2>
+            <div id="productGallery" class="product-gallery">
+                <!-- Los productos se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Nueva sección de galería -->
+    <section class="section" id="galeria">
+        <div class="gallery-section scroll-animation">
+            <h2>Galería de Estilo</h2>
+            <p>Descubre nuestras últimas colecciones y encuentra tu inspiración</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas Premium">
+                    <div class="gallery-overlay">
+                        <h4>Zapatillas Premium</h4>
+                        <p>Colección exclusiva de las mejores marcas</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moda Urbana">
+                    <div class="gallery-overlay">
+                        <h4>Moda Urbana</h4>
+                        <p>Estilo contemporáneo para el día a día</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1503341504253-dce7314c05b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Accesorios">
+                    <div class="gallery-overlay">
+                        <h4>Accesorios</h4>
+                        <p>Complementa tu look con estilo</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Conjuntos Premium">
+                    <div class="gallery-overlay">
+                        <h4>Conjuntos Premium</h4>
+                        <p>Coordinación perfecta para cualquier ocasión</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="quote-section scroll-animation">
+        <div class="quote-text">
+            "El éxito no es solo lo que logras, sino quien te conviertes en el proceso."
+        </div>
+        <div class="quote-author">- Steep Style Philosophy</div>
+    </div>
+
+    <section class="section" id="catalogos">
+        <div class="catalog-section scroll-animation">
+            <h2>Catálogos Exclusivos</h2>
+            <p>Descarga nuestros catálogos y descubre las últimas tendencias que transformarán tu guardarropa</p>
+            <div class="catalog-buttons">
+                <a href="#" class="catalog-btn" data-catalog="nike">
+                    <i class="fas fa-download"></i>
+                    Catálogo Nike
+                </a>
+                <a href="#" class="catalog-btn" data-catalog="adidas">
+                    <i class="fas fa-download"></i>
+                    Catálogo Adidas
+                </a>
+                <a href="#" class="catalog-btn" data-catalog="jordan">
+                    <i class="fas fa-download"></i>
+                    Catálogo Jordan
+                </a>
+                <a href="#" class="catalog-btn" data-catalog="completa">
+                    <i class="fas fa-download"></i>
+                    Colección Completa
+                </a>
+            </div>
+        </div>
+
+        <!-- Sección de administración de catálogos -->
+        <div class="upload-section scroll-animation">
+            <h3>Administrar Catálogos</h3>
+            <p>Sube y gestiona los archivos PDF de tus catálogos</p>
+            
+            <div class="file-upload">
+                <input type="file" id="catalogUpload" accept=".pdf" multiple>
+                <i class="fas fa-upload"></i>
+                Subir PDFs
+            </div>
+            
+            <div id="uploadedFiles" class="uploaded-files">
+                <!-- Los archivos subidos aparecerán aquí -->
+            </div>
+        </div>
+    </section>
+
+    <div class="quote-section scroll-animation">
+        <div class="quote-text">
+            "Invierte en ti mismo. Tu imagen es tu primera impresión y tu última oportunidad."
+        </div>
+        <div class="quote-author">- Wizcan, Founder</div>
+    </div>
+
+    <section class="section" id="contacto">
+        <div class="contact-section scroll-animation">
+            <h2>Conecta Con La Excelencia</h2>
+            <p>Tu éxito está a una conversación de distancia</p>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3><i class="fas fa-user-tie"></i> Wizcan</h3>
+                    <p>Fundador & Consultor de Estilo</p>
+                    <p>"Transformando vidas a través del poder del estilo"</p>
+                </div>
+                <div class="contact-card">
+                    <h3><i class="fas fa-phone"></i> Contacto Directo</h3>
+                    <p>989 922 593</p>
+                    <a href="https://wa.me/51989922593" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Consulta Inmediata
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <h3><i class="fas fa-clock"></i> Disponibilidad</h3>
+                    <p>Lun - Sáb: 9:00 AM - 8:00 PM</p>
+                    <p>Dom: 10:00 AM - 6:00 PM</p>
+                    <p><strong>Tu éxito no espera</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="quote-section scroll-animation">
+        <div class="quote-text">
+            "No solo vendemos ropa, creamos transformaciones. Tu nueva versión te está esperando."
+        </div>
+        <div class="quote-author">- Steep Style Promise</div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>STEEP STYLE</h3>
+            <p>Donde tu estilo encuentra su propósito</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/51989922593" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2025 Steep Style. Todos los derechos reservados. Diseñado para triunfadores.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Base de datos de productos (simulada)
+        const productDatabase = {
+            zapatillas: [
+                {
+                    name: "Nike Air Max 270",
+                    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 450",
+                    description: "Comodidad revolucionaria con estilo urbano"
+                },
+                {
+                    name: "Adidas Ultraboost 22",
+                    image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 520",
+                    description: "Máximo rendimiento y estilo premium"
+                },
+                {
+                    name: "Jordan 1 Retro High",
+                    image: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 680",
+                    description: "Icono atemporal del basketball urbano"
+                },
+                {
+                    name: "Nike Dunk Low",
+                    image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 380",
+                    description: "Estilo clásico para el día a día"
+                }
+            ],
+            poleras: [
+                {
+                    name: "Polo Nike Dri-FIT",
+                    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 89",
+                    description: "Tecnología que mantiene tu frescura"
+                },
+                {
+                    name: "Polera Adidas Essentials",
+                    image: "https://images.unsplash.com/photo-1583743814966-8936f37f4678?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 75",
+                    description: "Comodidad esencial para cualquier momento"
+                },
+                {
+                    name: "Camiseta Jordan Jumpman",
+                    image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 95",
+                    description: "El legado del basketball en tu outfit"
+                },
+                {
+                    name: "Polo Ralph Lauren Classic",
+                    image: "https://images.unsplash.com/photo-1571945153237-4929e783af4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 120",
+                    description: "Elegancia clásica y sofisticada"
+                }
+            ],
+            conjuntos: [
+                {
+                    name: "Conjunto Nike Tech Fleece",
+                    image: "https://images.unsplash.com/photo-1564557287817-3785e38ec1f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 280",
+                    description: "Tecnología y estilo en perfecta armonía"
+                },
+                {
+                    name: "Conjunto Adidas Tracksuit",
+                    image: "https://images.unsplash.com/photo-1506629905607-efa9bc7f7df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 245",
+                    description: "Comodidad deportiva para todo el día"
+                },
+                {
+                    name: "Conjunto Jordan Flight",
+                    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 320",
+                    description: "Inspirado en la grandeza del basketball"
+                }
+            ],
+            medias: [
+                {
+                    name: "Pack Nike Crew Socks",
+                    image: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 45",
+                    description: "Pack de 3 medias premium con tecnología Dri-FIT"
+                },
+                {
+                    name: "Medias Adidas Cushioned",
+                    image: "https://images.unsplash.com/photo-1544966503-7cc5ac882d5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 35",
+                    description: "Amortiguación superior para máximo confort"
+                },
+                {
+                    name: "Jordan Legacy Crew",
+                    image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    price: "S/. 55",
+                    description: "Estilo icónico desde los pies"
+                }
+            ]
+        };
+
+        // Sistema de archivos simulado para PDFs
+        let uploadedPDFs = {
+            nike: null,
+            adidas: null,
+            jordan: null,
+            completa: null
+        };
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animation').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(245, 240, 233, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(245, 240, 233, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('productModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const productGallery = document.getElementById('productGallery');
+        const closeBtn = document.querySelector('.close');
+
+        // Abrir modal al hacer click en producto
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                showProductModal(category);
+            });
+        });
+
+        // Función para mostrar el modal con productos
+        function showProductModal(category) {
+            const products = productDatabase[category];
+            if (!products) return;
+
+            // Actualizar título del modal
+            const categoryNames = {
+                zapatillas: 'Zapatillas Premium',
+                poleras: 'Poleras & Polos',
+                conjuntos: 'Conjuntos Deportivos',
+                medias: 'Medias Premium'
+            };
+            modalTitle.textContent = categoryNames[category];
+
+            // Limpiar galería anterior
+            productGallery.innerHTML = '';
+
+            // Crear elementos de productos
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    <h4>${product.name}</h4>
+                    <p>${product.description}</p>
+                    <div class="price">${product.price}</div>
+                `;
+                productGallery.appendChild(productItem);
+            });
+
+            // Mostrar modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Cerrar modal
+        closeBtn.addEventListener('click', closeModal);
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Funcionalidad de catálogos
+        document.querySelectorAll('.catalog-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const catalog = this.getAttribute('data-catalog');
+                downloadCatalog(catalog, this);
+            });
+        });
+
+        function downloadCatalog(catalogType, buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            
+            // Mostrar estado de carga
+            buttonElement.innerHTML = '<div class="loading"></div> Descargando...';
+            buttonElement.style.pointerEvents = 'none';
+
+            // Simular descarga
+            setTimeout(() => {
+                if (uploadedPDFs[catalogType]) {
+                    // Si existe un PDF subido, crear enlace de descarga
+                    const link = document.createElement('a');
+                    link.href = uploadedPDFs[catalogType].url;
+                    link.download = uploadedPDFs[catalogType].name;
+                    link.click();
+                    
+                    showNotification(`Descargando ${uploadedPDFs[catalogType].name}`, 'success');
+                } else {
+                    // Si no hay PDF, mostrar mensaje
+                    showNotification(`El catálogo ${catalogType} aún no está disponible. ¡Próximamente!`, 'info');
+                }
+
+                // Restaurar botón
+                buttonElement.innerHTML = originalContent;
+                buttonElement.style.pointerEvents = 'auto';
+            }, 1500);
+        }
+
+        // Sistema de subida de archivos
+        const fileUpload = document.getElementById('catalogUpload');
+        const uploadedFilesContainer = document.getElementById('uploadedFiles');
+
+        fileUpload.addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                if (file.type === 'application/pdf') {
+                    uploadFile(file);
+                } else {
+                    showNotification('Solo se permiten archivos PDF', 'error');
+                }
+            });
+        });
+
+        function uploadFile(file) {
+            // Crear URL temporal para el archivo
+            const fileURL = URL.createObjectURL(file);
+            
+            // Determinar categoría basada en el nombre del archivo
+            const fileName = file.name.toLowerCase();
+            let category = 'completa';
+            
+            if (fileName.includes('nike')) category = 'nike';
+            else if (fileName.includes('adidas')) category = 'adidas';
+            else if (fileName.includes('jordan')) category = 'jordan';
+
+            // Guardar en la base de datos simulada
+            uploadedPDFs[category] = {
+                name: file.name,
+                url: fileURL,
+                size: file.size
+            };
+
+            // Mostrar en la interfaz
+            displayUploadedFile(file, category);
+            showNotification(`${file.name} subido correctamente`, 'success');
+        }
+
+        function displayUploadedFile(file, category) {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.innerHTML = `
+                <div>
+                    <strong>${file.name}</strong>
+                    <small> (${(file.size / 1024 / 1024).toFixed(2)} MB - ${category.toUpperCase()})</small>
+                </div>
+                <button class="delete-file" onclick="deleteFile('${category}', this)">
+                    <i class="fas fa-trash"></i> Eliminar
+                </button>
+            `;
+            uploadedFilesContainer.appendChild(fileItem);
+        }
+
+        function deleteFile(category, buttonElement) {
+            if (confirm('¿Estás seguro de que quieres eliminar este archivo?')) {
+                // Revocar URL del objeto
+                if (uploadedPDFs[category]) {
+                    URL.revokeObjectURL(uploadedPDFs[category].url);
+                    uploadedPDFs[category] = null;
+                }
+                
+                // Remover elemento del DOM
+                buttonElement.parentElement.remove();
+                showNotification('Archivo eliminado correctamente', 'success');
+            }
+        }
+
+        // Sistema de notificaciones
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                color: white;
+                font-weight: bold;
+                z-index: 10001;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+            `;
+
+            // Colores según el tipo
+            const colors = {
+                success: '#28a745',
+                error: '#dc3545',
+                info: '#17a2b8',
+                warning: '#ffc107'
+            };
+
+            notification.style.background = colors[type] || colors.info;
+            notification.textContent = message;
+
+            document.body.appendChild(notification);
+
+            // Animación de entrada
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Remover después de 4 segundos
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 4000);
+        }
+
+        // Frases motivacionales rotativas
+        const quotes = [
+            {
+                text: "El éxito no es solo lo que logras, sino quien te conviertes en el proceso.",
+                author: "Steep Style Philosophy"
+            },
+            {
+                text: "Invierte en ti mismo. Tu imagen es tu primera impresión y tu última oportunidad.",
+                author: "Wizcan, Founder"
+            },
+            {
+                text: "No solo vendemos ropa, creamos transformaciones. Tu nueva versión te está esperando.",
+                author: "Steep Style Promise"
+            },
+            {
+                text: "La confianza es el mejor accesorio que puedes usar.",
+                author: "Style Wisdom"
+            },
+            {
+                text: "Tu estilo habla antes de que digas una palabra.",
+                author: "Fashion Truth"
+            },
+            {
+                text: "La excelencia no es un acto, sino un hábito. Vístete para el éxito todos los días.",
+                author: "Steep Style Mindset"
+            }
+        ];
+
+        // Rotar frases cada 8 segundos
+        let currentQuoteIndex = 0;
+        setInterval(() => {
+            const quoteElements = document.querySelectorAll('.quote-section');
+            if (quoteElements.length > 0) {
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+                const currentQuote = quotes[currentQuoteIndex];
+                
+                quoteElements.forEach(section => {
+                    const textElement = section.querySelector('.quote-text');
+                    const authorElement = section.querySelector('.quote-author');
+                    
+                    if (textElement && authorElement) {
+                        textElement.style.opacity = '0';
+                        authorElement.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            textElement.textContent = `"${currentQuote.text}"`;
+                            authorElement.textContent = `- ${currentQuote.author}`;
+                            textElement.style.opacity = '1';
+                            authorElement.style.opacity = '1';
+                        }, 300);
+                    }
+                });
+            }
+        }, 8000);
+
+        // Efectos de hover para las tarjetas de galería
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Preloader para imágenes
+        function preloadImages() {
+            const imageUrls = [];
+            Object.values(productDatabase).forEach(category => {
+                category.forEach(product => {
+                    imageUrls.push(product.image);
+                });
+            });
+
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            preloadImages();
+            
+            // Mostrar notificación de bienvenida
+            setTimeout(() => {
+                showNotification('¡Bienvenido a Steep Style! Tu transformación comienza aquí.', 'success');
+            }, 2000);
+        });
+
+        // Cerrar modal con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+
+        // Lazy loading para imágenes de productos en modal
+        function setupLazyLoading() {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Inicializar lazy loading
+        setupLazyLoading();
+    </script>
+</body>
+</html>
